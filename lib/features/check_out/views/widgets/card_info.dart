@@ -10,7 +10,7 @@ class CardInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 22,vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -22,7 +22,10 @@ class CardInfo extends StatelessWidget {
           SvgPicture.asset('assets/images/masterCard.svg'),
           const Column(
             children: [
-              Text("Credit Card",style: Styles.style18,),
+              Text(
+                "Credit Card",
+                style: Styles.style18,
+              ),
               Text("    Mastercard **78")
             ],
           )

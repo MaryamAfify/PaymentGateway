@@ -33,10 +33,10 @@ class PaymentDetailsBody extends StatelessWidget {
                   formKey.currentState!.save();
                 } else {
                   autovalidateMode = AutovalidateMode.always;
-                   Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return const ThankYouView();
-                }));
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const ThankYouView();
+                  }));
                 }
               },
             ),

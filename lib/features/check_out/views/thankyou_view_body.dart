@@ -9,7 +9,7 @@ class ThankYouViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context,title: ''),
+      appBar: buildAppBar(context, title: ''),
       body: Padding(
         padding: const EdgeInsets.all(32),
         child: Stack(
@@ -41,7 +41,3 @@ class ThankYouViewBody extends StatelessWidget {
     );
   }
 }
-
-
-
-

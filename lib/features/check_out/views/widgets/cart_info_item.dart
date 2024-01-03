@@ -3,7 +3,9 @@ import 'package:payment/core/utilies/styles.dart';
 
 class OrderInfoItem extends StatelessWidget {
   const OrderInfoItem({
-    super.key, required this.title, required this.value,
+    super.key,
+    required this.title,
+    required this.value,
   });
   final String title;
   final String value;

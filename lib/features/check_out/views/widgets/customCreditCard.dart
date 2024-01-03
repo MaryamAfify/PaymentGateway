@@ -21,7 +21,6 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
     return Column(
       children: [
         CreditCardWidget(
-          
             isHolderNameVisible: true,
             cardNumber: cardNumber,
             expiryDate: expiryDate,
