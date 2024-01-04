@@ -21,26 +21,26 @@ class MainApp extends StatelessWidget {
 // init paymentSheet(paymentIntentClinetSecret)
 // present paymentSheet
 
-Future<void> initPaymentSheet() async {
-  try {
-    // 1. create payment intent on the server
-    final data = await _createTestPaymentSheet();
+// Future<void> initPaymentSheet() async {
+//   try {
+//     // 1. create payment intent on the server
+//     final data = await _createTestPaymentSheet();
 
-    // 2. initialize the payment sheet
-    await Stripe.instance.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
-        // Main params
-        merchantDisplayName: 'Flutter Stripe Store Demo',
-        paymentIntentClientSecret: data['paymentIntent'],
-      ),
-    );
-    setState(() {
-      _ready = true;
-    });
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: $e')),
-    );
-    rethrow;
-  }
-}
+//     // 2. initialize the payment sheet
+//     await Stripe.instance.initPaymentSheet(
+//       paymentSheetParameters: SetupPaymentSheetParameters(
+//         // Main params
+//         merchantDisplayName: 'Flutter Stripe Store Demo',
+//         paymentIntentClientSecret: data['paymentIntent'],
+//       ),
+//     );
+//     setState(() {
+//       _ready = true;
+//     });
+//   } catch (e) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(content: Text('Error: $e')),
+//     );
+//     rethrow;
+//   }
+// }
