@@ -15,12 +15,4 @@ class ApiService {
             headers: {'Authorization': "Bearer $token"}));
     return response;
   }
-
-  Future initPaymentSheet({required String paymentIntentClientSecret}) async {
-    Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          paymentIntentClientSecret: paymentIntentClientSecret,
-          merchantDisplayName: 'Maryam'
-        ));
-  }
 }
