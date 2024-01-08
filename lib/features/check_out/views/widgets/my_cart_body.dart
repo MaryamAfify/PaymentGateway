@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment/core/utilies/styles.dart';
+import 'package:payment/features/check_out/data/repos/chekout_repo_imp.dart';
+import 'package:payment/features/check_out/view_model/cubit/stripe_paymnet_cubit.dart';
 import 'package:payment/features/check_out/views/payment_details.dart';
 import 'package:payment/features/check_out/views/widgets/cart_info_item.dart';
+import 'package:payment/features/check_out/views/widgets/custom_button.dart';
 import 'package:payment/features/check_out/views/widgets/payment_method_ListView.dart';
+import 'package:payment/features/check_out/views/widgets/payment_method_bottom_sheet.dart';
 import 'package:payment/features/check_out/views/widgets/total_price_item.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -52,7 +57,10 @@ class MyCartViewBody extends StatelessWidget {
                     context: context,
                     backgroundColor: Colors.grey.shade200,
                     builder: (context) {
-                      return const PaymentMethodBottomSheet();
+                      return  BlocProvider(
+                        create: (context) => StripePaymnetCubit(CheckoutRepoImp()),
+                        child: const PaymentMethodBottomSheet(),
+                      );
                     });
               },
             ),
@@ -61,59 +69,6 @@ class MyCartViewBody extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.onTap,
-    required this.text,
-  });
-  final Function() onTap;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 60,
-        decoration: ShapeDecoration(
-          color: const Color(0xFF34A853),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        child: Center(
-            child: Text(
-          text,
-          style: Styles.style22,
-        )),
-      ),
-    );
-  }
-}
-
-class PaymentMethodBottomSheet extends StatelessWidget {
-  const PaymentMethodBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          PaymentMethodListView(),
-          SizedBox(
-            height: 32,
-          ),
-          CustomButton(onTap: () {}, text: "Continue"),
-        ],
       ),
     );
   }
