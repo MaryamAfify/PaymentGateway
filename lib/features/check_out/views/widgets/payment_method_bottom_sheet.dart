@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment/features/check_out/views/widgets/custom_button_bloc_consumer.dart';
 import 'package:payment/features/check_out/views/widgets/my_cart_body.dart';
 import 'package:payment/features/check_out/views/widgets/payment_method_ListView.dart';
 
@@ -25,13 +26,4 @@ class PaymentMethodBottomSheet extends StatelessWidget {
   }
 }
 
-class CustomButtonBlocConsumer extends StatelessWidget {
-  const CustomButtonBlocConsumer({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return CustomButton(onTap: () {}, text: "Continue");
-  }
-}
