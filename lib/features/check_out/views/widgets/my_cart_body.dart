@@ -57,8 +57,9 @@ class MyCartViewBody extends StatelessWidget {
                     context: context,
                     backgroundColor: Colors.grey.shade200,
                     builder: (context) {
-                      return  BlocProvider(
-                        create: (context) => StripePaymnetCubit(CheckoutRepoImp()),
+                      return BlocProvider(
+                        create: (context) =>
+                            StripePaymnetCubit(CheckoutRepoImp()),
                         child: const PaymentMethodBottomSheet(),
                       );
                     });

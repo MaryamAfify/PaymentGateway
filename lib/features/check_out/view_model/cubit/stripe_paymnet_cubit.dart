@@ -17,6 +17,7 @@ class StripePaymnetCubit extends Cubit<StripePaymnetState> {
     data.fold((l) => emit(StripePaymnetFailure(errMsg: l.errMsg)),
         (r) => emit(StripePaymnetSuccess()));
   }
+
   @override
   void onChange(Change<StripePaymnetState> change) {
     log(change.toString());
