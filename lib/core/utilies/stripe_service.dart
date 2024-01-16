@@ -54,7 +54,7 @@ class StripeService {
     var response = await apiService.post(
         contentType: Headers.formUrlEncodedContentType,
         body: {'customer': customerId},
-        url: 'https://api.stripe.com/v1/payment_intents',
+        url: 'https://api.stripe.com/v1/ephemeral_keys',
         token: ApiKeys.secretKey,
         headers: {
           'Authorization': "Bearer ${ApiKeys.secretKey}",
