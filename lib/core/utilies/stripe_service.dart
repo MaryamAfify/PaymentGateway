@@ -3,6 +3,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment/core/utilies/api_keys.dart';
 import 'package:payment/core/utilies/api_service.dart';
 import 'package:payment/features/check_out/data/model/empheral_key/empheral_key.dart';
+import 'package:payment/features/check_out/data/model/init_payment_sheet_input_model.dart';
 import 'package:payment/features/check_out/data/model/payment_intent_input_model.dart';
 import 'package:payment/features/check_out/data/model/payment_intent_model/payment_intent_model.dart';
 
@@ -20,10 +21,13 @@ class StripeService {
     return paymentIntentModel;
   }
 
-  Future initPaymentSheet({required String paymentIntentClientSecret}) async {
+  Future initPaymentSheet(
+      {required InitPaymentSheetInputModel initPaymentSheetInputModel}) async {
     await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-            paymentIntentClientSecret: paymentIntentClientSecret,
+            paymentIntentClientSecret: initPaymentSheetInputModel.clinetSecret,
+            customerEphemeralKeySecret: initPaymentSheetInputModel.empheralKey,
+            customerId: initPaymentSheetInputModel.customerId,
             merchantDisplayName: 'Maryam'));
   }
 
@@ -34,8 +38,14 @@ class StripeService {
   Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
+    var empheralKeyModel = await createEphemeralKey(
+        customerId: paymentIntentInputModel.customerId);
+    var initPaymentSheetInputModel = InitPaymentSheetInputModel(
+        clinetSecret: paymentIntentModel.clientSecret!,
+        customerId: paymentIntentInputModel.customerId,
+        empheralKey: empheralKeyModel.secret!);
     await initPaymentSheet(
-        paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+        initPaymentSheetInputModel: initPaymentSheetInputModel);
     await displayPaymentSheet();
   }
 
