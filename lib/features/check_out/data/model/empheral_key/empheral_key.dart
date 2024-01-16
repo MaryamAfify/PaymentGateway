@@ -1,6 +1,6 @@
 import 'associated_object.dart';
 
-class EmpheralKey {
+class EmpheralKeyModel {
   String? id;
   String? object;
   List<AssociatedObject>? associatedObjects;
@@ -9,7 +9,7 @@ class EmpheralKey {
   bool? livemode;
   String? secret;
 
-  EmpheralKey({
+  EmpheralKeyModel({
     this.id,
     this.object,
     this.associatedObjects,
@@ -19,7 +19,7 @@ class EmpheralKey {
     this.secret,
   });
 
-  factory EmpheralKey.fromJson(Map<String, dynamic> json) => EmpheralKey(
+  factory EmpheralKeyModel.fromJson(Map<String, dynamic> json) => EmpheralKeyModel(
         id: json['id'] as String?,
         object: json['object'] as String?,
         associatedObjects: (json['associated_objects'] as List<dynamic>?)
